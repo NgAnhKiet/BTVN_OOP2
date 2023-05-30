@@ -28,22 +28,31 @@ import java.util.Scanner;
 //Ném ra ngoại lệ IOException và có thể dùng try/catch để xử lý ngoại lệ
 public class FileInOutputStreamDocGhiVaoFile {
     public static void main(String[] args) {
+        //Tạo 1 file mới là person.dat
         File file = new File("person.dat");
         try {
+            //Mở fileOutputStream để ghi dữ liệu vào file person.dat
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             System.out.println("Nhập chuỗi: ");
             Scanner scanner = new Scanner(System.in);
             String line = scanner.nextLine();
+            //Ghi dữ liệu của chuỗi đó vào file thông qua phương thức write
             fileOutputStream.write(line.getBytes());
+            //Đóng fileOutputStream
             fileOutputStream.close();
-
+            //Mở FileInputStream để đọc dữ liệu từ file person.dat
             FileInputStream fileInputStream = new FileInputStream("person.dat");
             System.out.println("Dữ liệu trong file cần in: ");
+            //Tạo DataInputStream để đọc dữ liệu từ FileInputStream.
             DataInputStream dataInputStream = new DataInputStream(fileInputStream);
             byte [] data = new byte[dataInputStream.available()];
+            //Đọc dữ liệu từ DataInputStream vào mảng byte data bằng phương thức read
             int Read = dataInputStream.read(data);
+            //ép kiểu mang byte thành dạng chuỗi
             String string = new String(data,0,Read);
+            //In ra đoạn chuỗi sau khi ép kiểu
             System.out.println(string);
+            //Đóng dataInputStream
             dataInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();

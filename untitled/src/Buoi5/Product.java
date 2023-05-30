@@ -4,9 +4,12 @@ import java.io.*;
 
 
 public class Product implements Serializable{
+    //Khai báo 3 biến
     private String ProID;
     private String ProName;
     private int Prize ;
+
+    //Phương thức khởi tạo 3 tham số
     public Product(String ID , String name , int prize){
         this.ProName = name;
         this.ProID = ID;
@@ -15,6 +18,7 @@ public class Product implements Serializable{
     public Product(){
 
     }
+    //Getter và Setter
 
     public String getProID() {
         return ProID;
@@ -39,6 +43,8 @@ public class Product implements Serializable{
     public void setPrize(int prize) {
         Prize = prize;
     }
+
+    //ToString
     public String toString(){
         return "product id : " + getProID() + " product name : " + getProName() + " prize : " + getPrize();
     }
